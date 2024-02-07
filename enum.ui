@@ -1,0 +1,49 @@
+local ScriptStatus = Enum UI Loading...
+print(ScriptStatus)
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Enum UI", HidePremium = false, SaveConfig = true, ConfigFolder = "enum_universl"})
+local Tab1 = Window:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local SectLP = Tab:AddSection({
+	Name = "Local Player"
+})
+Tab1:AddSlider({
+	Name = "Walkspeed",
+	Min = 16,
+	Max = 200,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "ws",
+	Callback = function(Value)
+		game.Workspace.LocalPlayer.Humanoid.Walkspeed = value
+	end    
+})
+Tab1:AddSlider({
+	Name = "JumpPower",
+	Min = 50,
+	Max = 200,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "jp",
+	Callback = function(Value)
+		game.Workspace.LocalPlayer.Humanoid.JumpPower = value
+	end    
+})
+Tab1:AddButton({
+	Name = "Fly Gui",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+  	end    
+})
+Tab1:AddButton({
+	Name = "Destroy UI",
+	Callback = function()
+      	 OrionLib:Destroy()
+})
+  	end
+OrionLib:Init()
